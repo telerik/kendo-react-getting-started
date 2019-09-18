@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, {Component} from 'react';
 import '@progress/kendo-theme-default/dist/all.css';
+import './App.css';
 import categories from './categories.json';
 import products from './products.json';
 import { process } from '@progress/kendo-data-query';
@@ -14,14 +14,14 @@ class App extends Component {
     
     this.state = {
       dropdownlistCategory: null,
-      windowVisible: false,
-      gridClickedRow: {},
       gridDataState: {
         sort: [
           { field: "ProductName", dir: "asc" }
         ],
         page: { skip: 0, take: 10 }
-      }
+      },
+      windowVisible: false,
+      gridClickedRow: {}
     }
   }
   
@@ -50,12 +50,8 @@ class App extends Component {
   
   render() {
     return (
-      <div id="kendoreact-getting-started">
-        <h1>KendoReact Getting Started</h1>
-        <ul>
-          <li>Select an item from the <strong>DropDownList</strong> to see its ID.</li>
-          <li>Click on a <strong>Grid</strong> row to see product details in a popup <strong>Window</strong>.</li>
-        </ul>
+      <div className="kendo-react-getting-started">
+        <h1>Hello KendoReact!</h1>
         <p>
           <DropDownList
             data={categories}
@@ -66,6 +62,20 @@ class App extends Component {
             />
           &nbsp; Selected category ID: <strong>{this.state.dropdownlistCategory}</strong>
         </p>
+        
+        <Grid
+          data={process(products, this.state.gridDataState)}
+          pageable={true}
+          sortable={true}
+          {...this.state.gridDataState}
+          onDataStateChange={this.handleGridDataStateChange}
+          style={{ height: "400px" }}
+          onRowClick={this.handleGridRowClick}>
+          <GridColumn field="ProductName" title="Product Name" />
+          <GridColumn field="UnitPrice" title="Price" format="{0:c}" />
+          <GridColumn field="UnitsInStock" title="Units in Stock" />
+          <GridColumn field="Discontinued" cell={checkboxColumn} />
+        </Grid>
         
         {this.state.windowVisible &&
           <Window
@@ -83,19 +93,6 @@ class App extends Component {
           </Window>
         }
         
-        <Grid
-          data={process(products, this.state.gridDataState)}
-          pageable={true}
-          sortable={true}
-          {...this.state.gridDataState}
-          onDataStateChange={this.handleGridDataStateChange}
-          onRowClick={this.handleGridRowClick}
-          style={{ height: "400px" }}>
-          <GridColumn field="ProductName" title="Product Name" />
-          <GridColumn field="UnitPrice" title="Price" format="{0:c}" />
-          <GridColumn field="UnitsInStock" title="Units in Stock" />
-          <GridColumn field="Discontinued" filter="boolean" cell={checkboxColumn} />
-        </Grid>
       </div>
     );
   }
