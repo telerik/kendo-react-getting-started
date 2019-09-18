@@ -4,16 +4,18 @@
   "private": true,
   "dependencies": {
     "@progress/kendo-data-query": "^1.5.2",
-    "@progress/kendo-react-dateinputs": "^3.3.0",
-    "@progress/kendo-react-dialogs": "^3.3.0",
-    "@progress/kendo-react-dropdowns": "^3.3.0",
-    "@progress/kendo-react-grid": "^3.3.0",
-    "@progress/kendo-react-inputs": "^3.3.0",
-    "@progress/kendo-react-intl": "^3.3.0",
-    "@progress/kendo-theme-default": "^4.1.0",
+    "@progress/kendo-drawing": "^1.5.12",
+    "@progress/kendo-react-dateinputs": "^3.4.0",
+    "@progress/kendo-react-dialogs": "^3.4.0",
+    "@progress/kendo-react-dropdowns": "^3.4.0",
+    "@progress/kendo-react-grid": "^3.4.0",
+    "@progress/kendo-react-inputs": "^3.4.0",
+    "@progress/kendo-react-intl": "^3.4.0",
+    "@progress/kendo-theme-default": "^4.3.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "save": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
