@@ -6,6 +6,7 @@
     "@progress/kendo-data-query": "^1.5.2",
     "@progress/kendo-drawing": "^1.5.12",
     "@progress/kendo-react-animation": "^3.4.0",
+    "@progress/kendo-react-data-tools": "^3.4.0",
     "@progress/kendo-react-dateinputs": "^3.4.0",
     "@progress/kendo-react-dialogs": "^3.4.0",
     "@progress/kendo-react-dropdowns": "^3.4.0",
