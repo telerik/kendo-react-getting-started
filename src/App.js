@@ -9,45 +9,55 @@ import { DropDownList } from '@progress/kendo-react-dropdowns';
 import { Window } from '@progress/kendo-react-dialogs';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      dropdownlistCategory: null,
-      gridDataState: {
-        sort: [
-          { field: "ProductName", dir: "asc" }
-        ],
-        page: { skip: 0, take: 10 }
-      },
-      windowVisible: false,
-      gridClickedRow: {}
-    }
+
+
+  state = {
+    dropdownlistCategory: null,
+    gridDataState: {
+      sort: [
+        { field: "ProductName", dir: "asc" }
+      ],
+      page: { skip: 0, take: 10 }
+    },
+    windowVisible: false,
+    gridClickedRow: {}
   }
-  
+
   handleDropDownChange = (e) => {
+    let newDataState = { ...this.state.gridDataState }
+    if (e.target.value.CategoryID !== null) {
+      newDataState.filter = {
+        logic: 'and',
+        filters: [{ field: 'CategoryID', operator: 'eq', value: e.target.value.CategoryID }]
+      }
+      newDataState.skip = 0
+    } else {
+      newDataState.filter = []
+      newDataState.skip = 0
+    }
     this.setState({
-      dropdownlistCategory: e.target.value.CategoryID
+      dropdownlistCategory: e.target.value.CategoryID,
+      gridDataState: newDataState
     });
   }
-  
+
   handleGridDataStateChange = (e) => {
     this.setState({gridDataState: e.data});
   }
-  
+
   handleGridRowClick = (e) => {
     this.setState({
         windowVisible: true,
         gridClickedRow: e.dataItem
     });
   }
-  
+
   closeWindow = (e) => {
     this.setState({
         windowVisible: false
     });
   }
-  
+
   render() {
     return (
       <div className="kendo-react-getting-started">
@@ -62,7 +72,7 @@ class App extends Component {
             />
           &nbsp; Selected category ID: <strong>{this.state.dropdownlistCategory}</strong>
         </p>
-        
+
         <Grid
           data={process(products, this.state.gridDataState)}
           pageable={true}
@@ -76,7 +86,7 @@ class App extends Component {
           <GridColumn field="UnitsInStock" title="Units in Stock" />
           <GridColumn field="Discontinued" cell={checkboxColumn} />
         </Grid>
-        
+
         {this.state.windowVisible &&
           <Window
             title="Product Details"
@@ -92,7 +102,7 @@ class App extends Component {
             </dl>
           </Window>
         }
-        
+
       </div>
     );
   }
