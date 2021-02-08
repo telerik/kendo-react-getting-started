@@ -17,7 +17,8 @@ class App extends Component {
       sort: [
         { field: "ProductName", dir: "asc" }
       ],
-      page: { skip: 0, take: 10 }
+      skip: 0,
+      take: 10
     },
     windowVisible: false,
     gridClickedRow: {}
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   handleGridDataStateChange = (e) => {
-    this.setState({gridDataState: e.data});
+    this.setState({gridDataState: e.dataState});
   }
 
   handleGridRowClick = (e) => {
