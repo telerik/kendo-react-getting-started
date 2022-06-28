@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '@progress/kendo-theme-default/dist/all.css';
-import './App.css';
+import './App.scss';
 import categories from './categories.json';
 import products from './products.json';
 import { process } from '@progress/kendo-data-query';
