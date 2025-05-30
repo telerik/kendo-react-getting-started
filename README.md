@@ -1,3 +1,7 @@
+> **Warning**
+> The `kendo-react-getting-started` repo has moved here:
+> https://github.com/telerik/kendo-react/tree/master/examples/kendo-react-getting-started
+
 ## Getting Started with KendoReact
 
 This project complements the [KendoReact documentation](https://www.telerik.com/kendo-react-ui/getting-started/). It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
